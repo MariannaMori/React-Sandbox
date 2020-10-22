@@ -1,0 +1,10 @@
+.box{
+  background-color: lightblue;
+  width: 200px;
+  height: 250px;
+  border-radius: 2px;
+  padding: 1rem;
+  display: inline-block;
+  margin: 2rem;
+  color: darkblue;
+}
