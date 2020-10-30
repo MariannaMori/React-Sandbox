@@ -15,12 +15,17 @@ addHandler = () =>{
 
 removeHandler = () =>{
 
-  this.setState({ likes: this.state.likes -1 });
+  if(this.state.likes < 0){
+   this.setState({ likes: 0 });
+  }else {
+    this.setState({ likes: this.state.likes -1 });
+  }
+  
 };
 
 resetHand = () =>{
  
-  this.setState({ likes: 0 });
+this.setState({ likes: 0 });
 };
 
   render() {
