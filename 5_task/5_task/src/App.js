@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import Circle from "./Components/Circle/Circle";
 import GameOver from "./Components/GameOver/GameOver";
 
+/* This JavaScript function always returns a random number between min and max (both included)*/
 const getRndInteger =(min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-
+/* By default the score is 0. Then we add it under clickHander. */
 class App extends Component {
   state = {
     score: 0,
@@ -23,6 +24,7 @@ class App extends Component {
   pace = 1500;
   timer = undefined;
 
+  /* This console.log allows to check it works. You should see wow in console every time you click. Here instead of id you could write anything.*/
   clickHandler = (id) => {
     console.log("wow youve clicked" + id);
 
@@ -37,6 +39,7 @@ class App extends Component {
     });
   };
 
+   /* Define nextActive as undefined. Later defint it as a random number between 1 and 4.*/
   nextCircle = () => {
     if (this.state.rounds >= 5) {
       this.stopHandler();
@@ -48,6 +51,7 @@ class App extends Component {
       nextActive = getRndInteger(1, 4);
     } while (nextActive === this.state.current);
 
+    /* Then we override current with nextActive. We add one to the number of rounds. */
     this.setState({
       current: nextActive,
       rounds: this.state.rounds + 1,
@@ -69,12 +73,17 @@ class App extends Component {
     this.setState({showGameOver: true})
   };
 
+/* Above we add one to score. Then we need to add a placeholder in our div to show it.*/
+/* Below, mapping comes between render and return. */
   render() {
     const circles = this.state.circles.map(item => {
       return (<Circle key={item.id} color={item.color} click={() => this.clickHandler(item.id)}
       active={this.state.current === item.id}
        />);
     });
+    /* Above, click calls the attribute in circle.js. Class components need "this" defined. Here it's important to say id because we call it from the class component above.*/
+
+    
     return (
       <div>
         <h1>Speed game</h1>
