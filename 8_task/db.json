@@ -10,17 +10,17 @@
     },
     {
       "firstname": "add",
-      "lastname": "asad",
-      "phonenumber": "asda",
+      "lastname": "test",
+      "phonenumber": "54168784",
       "message": "asddasd",
       "role": "other",
       "id": 2
     },
     {
-      "firstname": "daryrhsasd",
-      "lastname": "asdfgysd",
-      "phonenumber": "mnrerfga",
-      "message": "aspoiuytasd",
+      "firstname": "testname",
+      "lastname": "testinfo",
+      "phonenumber": "051846512",
+      "message": "hello",
       "role": "teacher",
       "id": 3
     }
