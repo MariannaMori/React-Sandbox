@@ -5,7 +5,7 @@ const closeHandler = () => {
   window.location.reload();
 };
 
-const Popup = ({ firstname, lastname, phonenumber, message, role, submit }) => {
+const Popup = ({ firstname, lastname, phonenumber, message, role }) => {
   return (
     <div className="overlay">
       <div className="popup">
@@ -26,8 +26,7 @@ const Popup = ({ firstname, lastname, phonenumber, message, role, submit }) => {
           <p>
             Role: <span>{role}</span>
           </p>
-          <button onClick={submit}>Yes, I am sure</button>
-          <button onClick={closeHandler}>Nope, don't want to post it</button>
+          <button onClick={closeHandler}>Close</button>
         </div>
       </div>
     </div>
