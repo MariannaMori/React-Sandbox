@@ -1,0 +1,28 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "firstname": "Marianna",
+      "lastname": "Mori",
+      "phonenumber": "124422456",
+      "message": "Small steps at a time",
+      "role": "student"
+    },
+    {
+      "firstname": "add",
+      "lastname": "asad",
+      "phonenumber": "asda",
+      "message": "asddasd",
+      "role": "other",
+      "id": 2
+    },
+    {
+      "firstname": "daryrhsasd",
+      "lastname": "asdfgysd",
+      "phonenumber": "mnrerfga",
+      "message": "aspoiuytasd",
+      "role": "teacher",
+      "id": 3
+    }
+  ]
+}
