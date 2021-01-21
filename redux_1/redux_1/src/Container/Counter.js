@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actionType from '../actions/actions'
+
 
 class Counter extends Component {
        
@@ -8,8 +10,8 @@ class Counter extends Component {
             <div>
                 <div className="counter_text">Your score: {this.props.ctr}</div>
                 <button onClick={this.props.onIncCounter}>Increase one</button>
-                <button >Decrease one</button>
-                <button >Reset</button>
+                <button onClick={this.props.onDecCounter}>Decrease one</button>
+                <button onClick={this.props.resetCounter}>Reset</button>
             </div>
         );
     }
@@ -22,10 +24,12 @@ const mapStateToProps = (state) => {
     };
 };
 
+
 const mapDispatchToProps = dispatch => {
     return {
-        onIncCounter: () => dispatch({type: "INCREMENT"}),
-        
+        onIncCounter: () => dispatch({type: actionType.INCREMENT}),
+        onDecCounter: () => dispatch({type: actionType.DECREMENT}),
+        resetCounter: () => dispatch({type: actionType.RESET})
     }
 }
 
