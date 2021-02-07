@@ -3,22 +3,26 @@ import PropTypes from 'prop-types';
 import ToDoItem from '../todo-item/todo-item';
 
 
-import './todo-list.css';
+import '../todo-list/todo-list.css';
 
-const ToDoList = ({ tasksList }) => (
+const ToDoList = ({ tasksList, removeTask, completeTask }) => (
     <ul className="todo-list">
-        {tasksList.map(({ id, text, isCompleted }) => (
-            <ToDoItem key={id} text={text} is Completed={isCompleted} />
-        ))}
+      {tasksList.map(({ id, text, isCompleted }) => (
+        <ToDoItem completeTask={completeTask} removeTask={removeTask} id={id} key={id} text={text} isCompleted={isCompleted} />
+      ))}
     </ul>
-);
-
-ToDoList.propTypes = {
+  );
+  
+  ToDoList.propTypes = {
     tasksList: PropTypes.array,
-}
-
-ToDoList.defaultProps = {
+    removeTask: PropTypes.func,
+    completeTask: PropTypes.func,
+  }
+  
+  ToDoList.defaultProps = {
     tasksList: [],
-}
-
-export default ToDoList;
+    removeTask: () => {},
+    completeTask: () => {},
+  }
+  
+  export default ToDoList;

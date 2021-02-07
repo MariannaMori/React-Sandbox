@@ -1,8 +1,23 @@
-import { ADD_TASK } from '../constants';
+import { ADD_TASK, REMOVE_TASK, COMPLETE_TASK, CHANGE_FILTER } from '../constants';
 
-export const addTast = (id, text, isCompleted) => ({  /*action is a function that takes certain parameters and returns new object created from these arguments. to this function we give the tests ide, text and isCompleted. And we always show type of action ADD_TASK pn top*/
-  type: 'ADD_TASK',
+export const addTast = (id, text, isCompleted) => ({
+  type: ADD_TASK,
   id,
   text,
   isCompleted
 });
+
+export const removeTask = id => ({
+  type: REMOVE_TASK,
+  id
+});
+
+export const completeTask = id => ({
+  type: COMPLETE_TASK,
+  id
+});
+
+export const changeFilter = activeFilter => ({
+  type: CHANGE_FILTER,
+  activeFilter,
+})

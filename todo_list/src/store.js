@@ -1,7 +1,8 @@
 import { createStore, compose } from 'redux';
-import rootReducer from './reducers/index';
+import rootReducer from './reducers/index';   
 
-/* eslint-disable no-underscore-dangle*/
+
+/* eslint-disable no-underscore-dangle */
 const composeEnhancers =
   process.env.NODE_ENV !== 'production' &&
   typeof window === 'object' &&
@@ -10,10 +11,12 @@ const composeEnhancers =
 /* eslint-enable */
 
 const configureStore = preloadedState => (
-  createStore( /* creates store */
+  createStore(
     rootReducer,
     preloadedState,
-    composeEnhancers(),
+    composeEnhancers(
+      /*applyMiddleware(save({ namespace: 'todo-list' })) */
+    ),
   )
 );
 
