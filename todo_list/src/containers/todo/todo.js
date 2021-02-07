@@ -1,4 +1,8 @@
+  
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { addTast } from '../../actions/actionCreator';
 
 import ToDoInput from '../../components/todo-input/todo-input';
 import ToDoList from '../../components/todo-list/todo-list';
@@ -6,43 +10,50 @@ import Footer from '../../components/footer/footer';
 
 import './todo.css';
 
-const TASKS = [
-    {
-        id: 1,
-        text: 'Do homework',
-        isCompleted: true,
-    },
-    {
-        id: 2,
-        text: 'Read JS book',
-        isCompleted: false,
-    },
-    {
-        id: 3,
-        text: 'Learn Typescript',
-        isCompleted: false,
-    }
-];
-
 class ToDo extends Component {
-    
-    state = {
-        activeFilter: 'all',
+
+  state = {
+    activeFilter: 'all',
+    taskText: ''
+  }
+
+  handleInputChange = ({ target: { value } }) => {
+    this.setState({
+      taskText: value,
+    })
+  }
+
+  addTast = ({ key }) => {
+    const { taskText } = this.state;
+
+    if (taskText.length > 3 && key === 'Enter') {
+      const { addTast } = this.props;
+
+      addTast((new Date()).getTime(), taskText, false);
+
+      this.setState({
+        taskText: '',
+      })
+
     }
 
-    render() {
-        const { activeFilter } = this.state;
-        const tasksList = TASKS;
-        const isTasksExist = tasksList && tasksList.length > 0;
-    
-        return (
-        <div className="todo-wrapper">
-        <ToDoInput />
-        {isTasksExist && <ToDoList tasksList={tasksList} />}
-        {isTasksExist && <Footer amount={tasksList.length} activeFilter={activeFilter} />}
-    </div>
-        
-        );
-    }
-    
+  }
+
+  render() {
+    const { activeFilter, taskText } = this.state;
+    const { tasks } = this.props;
+    const isTasksExist = tasks && tasks.length > 0;
+
+    return (
+      <div className="todo-wrapper">
+        <ToDoInput onKeyPress={this.addTast} onChange={this.handleInputChange} value={taskText} />
+        {isTasksExist && <ToDoList tasksList={tasks} />}
+        {isTasksExist && <Footer amount={tasks.length} activeFilter={activeFilter} />}
+      </div>
+    );
+  }
 }
+
+export default connect(state => ({
+  tasks: state.tasks,
+}), { addTast })(ToDo);
