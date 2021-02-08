@@ -1,7 +1,6 @@
 import React from 'react'
 import { List, IconButton, Icon, FlexboxGrid, Alert } from 'rsuite'
-import { connect } from 'react-redux'
-import { delTodo } from '../redux'
+
 
 const Todos = ({ delTodo, todos }) => {
   const del = (todo) => {
