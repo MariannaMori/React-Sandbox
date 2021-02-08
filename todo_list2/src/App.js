@@ -1,12 +1,13 @@
 import React, {useState} from 'react'
 import 'rsuite/dist/styles/rsuite-default.css'
-import { Button, Container, Header, Navbar, Content, FlexboxGrid, Panel, Form, FormGroup,ControlLabel, FormControl, ButtonToolbar, Alert   } from 'rsuite'
+import { Button, Container, Header, Navbar, Content, FlexboxGrid, Panel, Form, FormGroup,ControlLabel, FormControl, ButtonToolbar, Alert, Divider   } from 'rsuite'
 import { connect } from 'react-redux'
 import { addTodo, Todo } from './redux'
 import './App.css'
 import {generate} from 'shortid'
+import Todos from './components/Todos'
 
-const App = ({ dispatch, todos }) => {
+const App = ({ dispatch }) => {
   const [state, setState] = useState({ txt: ''})
 
   const updateTxt = (txt) => setState({ txt })
@@ -61,6 +62,4 @@ const App = ({ dispatch, todos }) => {
   )
 }
 
-export default connect(({ todos }) => {
-  return { todos }
-})(App)
+export default connect()(App)
