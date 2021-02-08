@@ -1,10 +1,19 @@
-import { combineReducers, createStore } from 'redux'
-import {addTodo, todos, Todo } from './todos'
+
+import { combineReducers, createStore, compose, applyMiddleware } from 'redux'
+import { todos, addTodo, Todo } from './todos'
+
 
 const reducers = combineReducers({
-    todos,
+  todos,
+  
 })
 
-export default createStore(reducers)
+export default createStore(
+  reducers,
+  compose(
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  )
+)
 
 export { addTodo, Todo }

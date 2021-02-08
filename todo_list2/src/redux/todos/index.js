@@ -1,7 +1,7 @@
 import { todos } from './reducer'
 import { addTodo } from './actions'
-import { ToDo } from './model'
+import { Todo } from './model'
 
 
 
-export { todos, addTodo, ToDo }
+export { todos, addTodo, Todo }
