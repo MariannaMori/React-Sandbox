@@ -1,16 +1,15 @@
-import { ADD_TODO } from './actionTypes'
+import { ADD_TODO, REMOVE_TODO } from './actionTypes'
 
 const initialState = []
 
+export const todos = (state = initialState, { todo, type }) => {
+  switch (type) {
+    case ADD_TODO:
+      return [...state, todo]
+    case REMOVE_TODO:
+      return state.filter(({ id }) => todo.id !== id)
 
-export const todos = (state = initialState, { type, todo}) => {
-    switch (type) {
-        case ADD_TODO:
-            return [ ...state, todo]  /* === state.push(todo) */
-            
-
-    default: return state
-        
-    }
-
+    default:
+      return state
+  }
 }
