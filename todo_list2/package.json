@@ -12,6 +12,7 @@
     "react-scripts": "4.0.2",
     "redux": "^4.0.5",
     "rsuite": "^4.8.9",
+    "shortid": "^2.2.16",
     "web-vitals": "^1.1.0"
   },
   "scripts": {

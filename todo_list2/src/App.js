@@ -1,13 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
 import 'rsuite/dist/styles/rsuite-default.css'
-import { Button, Container, Header, Navbar, Content, FlexboxGrid, Panel, Form, FormGroup,ControlLabel, FormControl, ButtonToolbar   } from 'rsuite'
+import { Button, Container, Header, Navbar, Content, FlexboxGrid, Panel, Form, FormGroup,ControlLabel, FormControl, ButtonToolbar, Alert   } from 'rsuite'
 import { connect } from 'react-redux'
 import { addTodo, Todo } from './redux'
 import './App.css'
+import {generate} from 'shortid'
 
 const App = ({ dispatch, todos }) => {
+  const [state, setState] = useState({ txt: ''})
+
+  const updateTxt = (txt) => setState({ txt })
+
   const createTodo = () => {
-    dispatch(addTodo(new Todo(1, 'learn redux')))
+    dispatch(addTodo(new Todo(generate(), state.txt)))
+    Alert.success(`Added todo txt => ${state.txt}`)
+    setState({ txt: '' })
 
   }
   return (
@@ -54,7 +61,6 @@ const App = ({ dispatch, todos }) => {
   )
 }
 
-export default connect((state) => {
-  console.log(state)
-  return { todos: state.todos }
+export default connect(({ todos }) => {
+  return { todos }
 })(App)
